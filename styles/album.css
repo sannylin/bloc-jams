@@ -57,6 +57,16 @@ body.album {
     width: 5%;
 }
 
+.song-item-plays {
+    width: 5%;
+    text-align: center;
+}
+
+th{
+    font-weight: normal;
+    text-align: left;
+}
+
 @media (max-width: 40rem) and (min-width: 20rem) {
     .album-view-details {
         text-align: center
