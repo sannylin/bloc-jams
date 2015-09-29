@@ -1,4 +1,3 @@
-// Example Album
 var albumPicasso = {
     name: 'The Colors',
     artist: 'Pablo Picasso',
@@ -14,13 +13,12 @@ var albumPicasso = {
     ]
 };
 
-// Another Example Album
 var albumMarconi = {
     name: 'The Telephone',
     artist: 'Guglielmo Marconi',
     label: 'EM',
     year: '1909',
-    albumArtUrl: 'assets/images/album_covers/20.png',
+    albumArtUrl: 'assets/images/album_covers/06.png',
     songs: [
         { name: 'Hello, Operator?', length: '1:01' },
         { name: 'Ring, ring, ring', length: '5:01' },
@@ -29,6 +27,20 @@ var albumMarconi = {
         { name: 'Wrong phone number', length: '2:15'}
     ]
 };
+
+var albumSanny = {
+    name: 'Lego',
+    artist: 'Sanny Lin',
+    label: 'Black Cat',
+    year: '2015',
+    albumArtUrl: 'assets/images/album_covers/19.png',
+    songs: [
+        { name: 'Crazy Cat Lady', length: '3:01' },
+        { name: 'Cat hair everywhere', length: '2:02' },
+        { name: 'Hide those claws', length: '3:45' },
+        { name: 'Stalker cat', length: '3:13' }
+    ]
+}
 
 var createSongRow = function(songNumber, songName, songLength) {
     var template =
@@ -62,5 +74,23 @@ var setCurrentAlbum = function(album) {
 };
  
 window.onload = function() {
+    var i=3;
+
     setCurrentAlbum(albumPicasso);
+
+    var albumArt = document.getElementsByClassName('album-cover-art')[0];
+
+    albumArt.addEventListener('click', function(event) {
+         if(i%3 == 0){
+            setCurrentAlbum(albumMarconi);
+         }
+         else if(i%3 == 1){
+            setCurrentAlbum(albumSanny);
+         }
+         else{
+            setCurrentAlbum(albumPicasso);
+         }
+
+         i++;
+    });
 };
