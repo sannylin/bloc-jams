@@ -27,3 +27,17 @@ var albumMarconi = {
         { name: 'Wrong phone number', length: '2:15'}
     ]
 };
+
+var albumSanny = {
+    name: 'Lego',
+    artist: 'Sanny Lin',
+    label: 'Black Cat',
+    year: '2015',
+    albumArtUrl: 'assets/images/album_covers/19.png',
+    songs: [
+        { name: 'Crazy Cat Lady', length: '3:01' },
+        { name: 'Cat hair everywhere', length: '2:02' },
+        { name: 'Hide those claws', length: '3:45' },
+        { name: 'Stalker cat', length: '3:13' }
+    ]
+}

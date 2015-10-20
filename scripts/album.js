@@ -1,17 +1,3 @@
-var albumSanny = {
-    name: 'Lego',
-    artist: 'Sanny Lin',
-    label: 'Black Cat',
-    year: '2015',
-    albumArtUrl: 'assets/images/album_covers/19.png',
-    songs: [
-        { name: 'Crazy Cat Lady', length: '3:01' },
-        { name: 'Cat hair everywhere', length: '2:02' },
-        { name: 'Hide those claws', length: '3:45' },
-        { name: 'Stalker cat', length: '3:13' }
-    ]
-}
-
 var createSongRow = function(songNumber, songName, songLength) {
     var template =
           '<tr class="album-view-song-item">'
@@ -184,6 +170,21 @@ var previousSong = function() {
     $lastSongNumberCell.html(lastSongNumber);  
 };
 
+var togglePlayFromPlayerBar = function(){
+    var currentlyPlayingCell = getSongNumberCell(currentlyPlayingSongNumber);
+
+    if (currentSoundFile.isPaused()) {
+        currentlyPlayingCell.html(pauseButtonTemplate);
+        $('.main-controls .play-pause').html(playerBarPauseButton);
+        currentSoundFile.play();
+    }
+    else if (currentSoundFile){
+        currentlyPlayingCell.html(playButtonTemplate);
+        $('.main-controls .play-pause').html(playerBarPlayButton);
+        currentSoundFile.pause();   
+    }
+};
+
 var updatePlayerBarSong = function() {
     $('.currently-playing .song-name').text(currentSongFromAlbum.name);
     $('.currently-playing .artist-name').text(currentAlbum.artist);
@@ -205,12 +206,14 @@ var currentVolume = 80;
 
 var $previousButton = $('.main-controls .previous');
 var $nextButton = $('.main-controls .next');
+var $playPauseButton = $('.main-controls .play-pause');
 
 $(document).ready(function() {
     setCurrentAlbum(albumPicasso);
 
     $previousButton.click(previousSong);
     $nextButton.click(nextSong);
+    $playPauseButton.click(togglePlayFromPlayerBar);
 
     var albums = [albumMarconi, albumSanny, albumPicasso];
     var albumArt = document.getElementsByClassName('album-cover-art')[0];
